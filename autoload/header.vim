@@ -91,7 +91,7 @@ fun s:set_props()
         \ b:filetype == 'verilog' ||
         \ b:filetype == 'lex' ||
         \ b:filetype == 'yacc' ||
-        \ b:filetype == 'cfc' ||
+        \ b:filetype == 'cfc'
 
         let b:block_comment = 1
         let b:comment_char = ' *'
