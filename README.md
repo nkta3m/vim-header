@@ -266,6 +266,7 @@ Supported filetypes are:
 - c
 - cfg
 - clojure
+- coldfusion(cfc,cfml)
 - cpp
 - cs
 - css
