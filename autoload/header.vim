@@ -73,6 +73,7 @@ fun s:set_props()
         \ b:filetype == 'c' ||
         \ b:filetype == 'cpp' ||
         \ b:filetype == 'css' ||
+        \ (expand('%:e') == 'cfc' && b:filetype == 'cf') ||
         \ b:filetype == 'groovy' ||
         \ b:filetype == 'java' ||
         \ b:filetype == 'kotlin' ||
@@ -173,6 +174,12 @@ fun s:set_props()
         let b:comment_char = ' -'
         let b:comment_begin = '<!--'
         let b:comment_end = '-->'
+    " ----------------------------------
+    elseif b:filetype == 'cf'
+        let b:block_comment = 1
+        let b:comment_char = ' -- '
+        let b:comment_begin = '<!---'
+        let b:comment_end = '--->'
     "-----------------------------------
     elseif b:filetype == 'pug'
         let b:first_line = '//-'
