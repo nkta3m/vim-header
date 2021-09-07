@@ -1,10 +1,3 @@
-```
- File: README.md
- Author: H.Alper Tuna <halpertuna@gmail.com>
- Date: 07.09.2021
- Last Modified Date: 07.09.2021
- Last Modified By: H.Alper Tuna <halpertuna@gmail.com>
-```
 vim-header
 ==========
 Easily adds brief author info and license headers
