@@ -278,11 +278,15 @@ Supported filetypes are:
 - arduino
 - asm
 - c
+- cf
+- cfc
+- cfml
 - cfg
 - clojure
 - cpp
 - cs
 - css
+- dart
 - dosini
 - elixir
 - erlang
