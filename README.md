@@ -1,3 +1,10 @@
+```
+ File: README.md
+ Author: H.Alper Tuna <halpertuna@gmail.com>
+ Date: 07.09.2021
+ Last Modified Date: 07.09.2021
+ Last Modified By: H.Alper Tuna <halpertuna@gmail.com>
+```
 vim-header
 ==========
 Easily adds brief author info and license headers
@@ -122,10 +129,10 @@ g:header_auto_add_header
 ------------------------
 
 ```vim
-let g:header_auto_add_header = 0
+let g:header_auto_add_header = 1
 ```
 
-Toggles automatic headers' addition. **1 by default**.  
+Toggles automatic headers' addition. **0 by default**.
 If enable this feature and there is already header in current file,
 this plugin will update it automaically.
 But if you only want to update the header, look at the option below.
@@ -136,7 +143,7 @@ g:header_auto_update_header
 ```vim
 let g:header_auto_update_header = 0
 ```
-Toggles automatic headers' update. **1 by default**.  
+Toggles automatic headers' update. **1 by default**.
 Ignore this option if `g:header_auto_add_header` is enabled
 
 g:header_alignment
