@@ -134,9 +134,9 @@ g:header_auto_update_header
 ---------------------------
 
 ```vim
-let g:header_auto_update_header = 0
+let g:header_auto_update_header = 1
 ```
-Toggles automatic headers' update. **1 by default**.
+Toggles automatic headers' update. **0 by default**.
 Ignore this option if `g:header_auto_add_header` is enabled
 
 g:header_alignment
