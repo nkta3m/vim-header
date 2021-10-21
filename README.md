@@ -97,6 +97,7 @@ These settings are for your `$MYVIMRC` (vim: `.vimrc`, neovim:
 Settings related to **headers**:
 
 - [`g:header_auto_add_header`](#gheader_auto_add_header)
+- [`g:header_auto_update_header`](#gheader_auto_update_header)
 - [`g:header_alignment`](#gheader_alignment)
 - [`g:header_max_size`](#gheader_max_size)
 
@@ -121,10 +122,22 @@ g:header_auto_add_header
 ------------------------
 
 ```vim
-let g:header_auto_add_header = 0
+let g:header_auto_add_header = 1
 ```
 
-Toggles automatic headers' addition. **1 by default**.
+Toggles automatic headers' addition. **0 by default**.
+If enable this feature and there is already header in current file,
+this plugin will update it automaically.
+But if you only want to update the header, look at the option below.
+
+g:header_auto_update_header
+---------------------------
+
+```vim
+let g:header_auto_update_header = 1
+```
+Toggles automatic headers' update. **0 by default**.
+Ignore this option if `g:header_auto_add_header` is enabled
 
 g:header_alignment
 ------------------
@@ -261,15 +274,20 @@ comment characters (`;`, `//`, `#`, ...). **`#` by default**.
 Filetypes support
 -----------------
 Supported filetypes are:
+- ada
 - arduino
 - asm
 - c
+- cf
+- cfc
+- cfml
 - cfg
 - clojure
 - coldfusion(cfc,cfml)
 - cpp
 - cs
 - css
+- dart
 - dosini
 - elixir
 - erlang
@@ -300,6 +318,7 @@ Supported filetypes are:
 - scala
 - scheme
 - sh
+- tcl
 - tex
 - tmux
 - tsx

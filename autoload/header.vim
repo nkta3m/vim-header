@@ -91,7 +91,9 @@ fun s:set_props()
         \ b:filetype == 'systemverilog' ||
         \ b:filetype == 'verilog' ||
         \ b:filetype == 'lex' ||
-        \ b:filetype == 'yacc'
+        \ b:filetype == 'yacc' ||
+        \ b:filetype == 'cfc' ||
+        \ b:filetype == 'cf'
 
         let b:block_comment = 1
         let b:comment_char = ' *'
@@ -155,7 +157,8 @@ fun s:set_props()
         let b:comment_char = ";;"
     " ----------------------------------
     elseif b:filetype == "cs" ||
-          \ b:filetype == "proto"
+          \ b:filetype == "proto" ||
+          \ b:filetype == "dart"
         let b:comment_char = "//"
     " ----------------------------------
     elseif b:filetype == "xdefaults"
@@ -176,6 +179,13 @@ fun s:set_props()
         let b:comment_end = '-->'
     " ----------------------------------
     elseif b:filetype == 'cf'
+        let b:block_comment = 1
+        let b:comment_char = ' -- '
+        let b:comment_begin = '<!---'
+        let b:comment_end = '--->'
+    "-----------------------------------
+    elseif b:filetype == 'cfm' ||
+          \ b:filetype == 'cfml'
         let b:block_comment = 1
         let b:comment_char = ' -- '
         let b:comment_begin = '<!---'
@@ -221,6 +231,14 @@ fun s:set_props()
         let b:block_comment = 1
         let b:comment_begin = '```'
         let b:comment_end = '```'
+        " ----------------------------------
+    elseif b:filetype == 'tcl'
+       let b:first_line = '#!/usr/bin/env tclsh'
+       let b:first_line_pattern = '#!\s*/usr/bin/env\s* tclsh'
+       let b:comment_char = '#'
+    " ----------------------------------
+    elseif b:filetype == 'ada'
+        let b:comment_char = '--'
     else
         let b:is_filetype_available = 0
     endif
@@ -740,3 +758,12 @@ fun header#add_header(type, license, silent)
         echo 'No defined comment syntax for ' . filetype . ' filetype.'
     endif
 endfun
+
+fun header#update_header()
+    call s:set_props()
+    if b:is_filetype_available && s:has_required_headers_in_range(g:header_max_size)
+        let l:longer_header_length = strchars(s:get_longer_header(b:user_headers))
+        call s:update_fields(l:longer_header_length)
+        call s:update_header()
+    endif
+endfunc
