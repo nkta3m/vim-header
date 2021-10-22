@@ -73,6 +73,7 @@ fun s:set_props()
         \ b:filetype == 'c' ||
         \ b:filetype == 'cpp' ||
         \ b:filetype == 'css' ||
+        \ (expand('%:e') == 'cfc' && b:filetype == 'cf') ||
         \ b:filetype == 'groovy' ||
         \ b:filetype == 'java' ||
         \ b:filetype == 'kotlin' ||
@@ -90,9 +91,7 @@ fun s:set_props()
         \ b:filetype == 'systemverilog' ||
         \ b:filetype == 'verilog' ||
         \ b:filetype == 'lex' ||
-        \ b:filetype == 'yacc' ||
-        \ b:filetype == 'cfc' ||
-        \ b:filetype == 'cf'
+        \ b:filetype == 'yacc'
 
         let b:block_comment = 1
         let b:comment_char = ' *'
@@ -176,6 +175,12 @@ fun s:set_props()
         let b:comment_char = ' -'
         let b:comment_begin = '<!--'
         let b:comment_end = '-->'
+    " ----------------------------------
+    elseif b:filetype == 'cf'
+        let b:block_comment = 1
+        let b:comment_char = ' -- '
+        let b:comment_begin = '<!---'
+        let b:comment_end = '--->'
     "-----------------------------------
     elseif b:filetype == 'cfm' ||
           \ b:filetype == 'cfml'

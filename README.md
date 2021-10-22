@@ -278,11 +278,9 @@ Supported filetypes are:
 - arduino
 - asm
 - c
-- cf
-- cfc
-- cfml
 - cfg
 - clojure
+- coldfusion(cfc,cfml)
 - cpp
 - cs
 - css
