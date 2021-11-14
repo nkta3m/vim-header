@@ -308,6 +308,7 @@ Supported filetypes are:
 - pug
 - proto
 - python
+- racket
 - rst
 - ruby
 - rust
