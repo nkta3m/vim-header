@@ -151,7 +151,8 @@ fun s:set_props()
     elseif b:filetype == "lisp" ||
           \ b:filetype == "scheme" ||
           \ b:filetype == "asm" ||
-          \ b:filetype == "clojure"
+          \ b:filetype == "clojure" ||
+          \ b:filetype == "racket"
         let b:comment_char = ";;"
     " ----------------------------------
     elseif b:filetype == "cs" ||
