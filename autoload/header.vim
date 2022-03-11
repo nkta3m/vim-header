@@ -134,6 +134,9 @@ fun s:set_props()
         let b:first_line = '#!/bin/zsh'
         let b:first_line_pattern = '#!\s*/bin/zsh'
         let b:comment_char = '#'
+    elseif b:filetype == 'fish'
+        let b:first_line_pattern = '#!\s*/bin/fish'
+        let b:comment_char = '#'
     " ----------------------------------
     elseif b:filetype == "ruby" ||
           \ b:filetype == "elixir" ||
@@ -237,6 +240,8 @@ fun s:set_props()
        let b:comment_char = '#'
     " ----------------------------------
     elseif b:filetype == 'ada'
+        let b:comment_char = '--'
+    elseif b:filetype == 'sql'
         let b:comment_char = '--'
     else
         let b:is_filetype_available = 0
