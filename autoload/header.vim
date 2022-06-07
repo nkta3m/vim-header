@@ -671,6 +671,14 @@ fun s:update_fields(longer_header_length)
         let b:field_license_id = b:field_license_id . b:field_separator
     endif
 
+    if match(b:user_headers, b:field_project) != -1
+        if g:header_alignment
+            let b:field_project =
+                \ s:align_field_with_spaces(b:field_project, a:longer_header_length)
+        endif
+        let b:field_project = b:field_project . b:field_separator
+    endif
+
     if match(b:user_headers, b:field_author) != -1
         if g:header_alignment
             let b:field_author =
