@@ -231,7 +231,7 @@ g:header_field_timestamp
 let g:header_field_timestamp = 0
 ```
 
-Toggles `Date:` header field. **1 by default**.
+Toggles `File Created:` header field. **1 by default**.
 
 g:header_field_modified_timestamp
 ---------------------------------
