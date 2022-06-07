@@ -1,6 +1,11 @@
 " PROPERTIES AND FUNCTIONS FOR GENERAL PURPOSES
 " ---------------------------------------------
 " Set default global values
+if !exists('g:header_field_project')
+    let g:header_field_project = ''
+endif
+if !exists('g:header_field_last_separator')
+	let g:header_field_last_separator = 0
 if !exists('g:header_field_copyright')
     let g:header_field_copyright = ''
 endif
@@ -60,11 +65,13 @@ fun s:set_props()
     let b:auto_space_after_char = 1 " Put auto space after comment char, if line is not empty
     " Field placeholders according to doc comment syntax, if available
     let b:field_file = 'File'
+	let b:field_project = 'Project'
     let b:field_license_id = 'License'
     let b:field_author = 'Author'
-    let b:field_date = 'Date'
+    let b:field_date = 'File Created'
     let b:field_modified_date = 'Last Modified Date'
     let b:field_modified_by = 'Last Modified By'
+	let b:field_last_separator = '-----'
     let b:field_separator = ':'
 
     " Setting Values for Languages
@@ -308,10 +315,6 @@ fun s:add_header()
     endif
 
     " Fill user's information
-    if g:header_field_copyright != ''
-      call append(i, b:comment_char. g:header_field_copyright)
-      let i += 1
-    endif
     if g:header_field_filename
         if g:header_field_filename_path
             call append(i, b:comment_char . b:field_file . ' ' . expand('%s:t'))
@@ -320,8 +323,16 @@ fun s:add_header()
         endif
         let i += 1
     endif
+	if g:header_field_project != ''
+        call append(i, b:comment_char . b:field_project . ' ' . g:header_field_project)
+        let i += 1
+    endif
     if g:header_field_license_id != ''
         call append(i, b:comment_char . b:field_license_id . ' ' . g:header_field_license_id)
+        let i += 1
+    endif
+	if g:header_field_timestamp
+        call append(i, b:comment_char . b:field_date . ' ' . strftime(g:header_field_timestamp_format))
         let i += 1
     endif
     if g:header_field_author != ''
@@ -331,10 +342,6 @@ fun s:add_header()
             let email = ''
         endif
         call append(i, b:comment_char . b:field_author . ' ' . g:header_field_author . email)
-        let i += 1
-    endif
-    if g:header_field_timestamp
-        call append(i, b:comment_char . b:field_date . ' ' . strftime(g:header_field_timestamp_format))
         let i += 1
     endif
     if g:header_field_modified_timestamp
@@ -348,6 +355,14 @@ fun s:add_header()
             let email = ''
         endif
         call append(i, b:comment_char . b:field_modified_by . ' ' . g:header_field_author . email)
+        let i += 1
+    endif
+	if g:header_field_last_separator
+		call append(i, b:comment_char . g:header_field_last_separator)
+		let i += 1
+	endif
+    if g:header_field_copyright != ''
+        call append(i, b:comment_char. g:header_field_copyright)
         let i += 1
     endif
 

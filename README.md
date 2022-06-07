@@ -113,6 +113,7 @@ Settings related to **headers' fields**:
 - [`g:header_field_modified_by`](#gheader_field_modified_by)
 - [`g:header_field_timestamp_format`](#gheader_field_timestamp_format)
 - [`g:header_field_license_id`](#gheader_field_license_id)
+- [`g:header_field_last_separator`](#gheader_field_last_separator)
 
 Settings related to **supported filetypes**:
 
@@ -258,6 +259,15 @@ let g:header_field_license_id = 'BSD-3-Clause'
 ```
 
 Sets license field. **'' by default**.
+
+g:header_field_last_separator
+-------------------------------
+
+```vim
+let g:header_field_last_separator = 0
+```
+
+Toggles `-----` header field. **0 by default**.
 
 g:header_cfg_comment_char
 -------------------------
