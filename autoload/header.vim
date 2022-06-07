@@ -359,7 +359,7 @@ fun s:add_header()
         let i += 1
     endif
 	if g:header_field_last_separator
-		call append(i, b:comment_char. g:field_last_separator)
+		call append(i, b:comment_char. b:field_last_separator)
 		let i += 1
 	endif
     if g:header_field_copyright != ''
