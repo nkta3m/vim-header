@@ -607,7 +607,7 @@ fun s:get_user_headers()
     endif
 
     " Project header
-    if g:header_field_project
+    if g:header_field_project != ''
         call add(headers_fields, b:field_project)
     endif
 
