@@ -605,6 +605,7 @@ fun s:get_user_headers()
     if g:header_field_filename
         call add(headers_fields, b:field_file)
     endif
+
     " Project header
     if g:header_field_project
         call add(headers_fields, b:field_project)
@@ -671,20 +672,20 @@ fun s:update_fields(longer_header_length)
         let b:field_file = b:field_file . b:field_separator
     endif
 
-    if match(b:user_headers, b:field_license_id) != -1
-        if g:header_alignment
-            let b:field_license_id =
-                \ s:align_field_with_spaces(b:field_license_id, a:longer_header_length)
-        endif
-        let b:field_license_id = b:field_license_id . b:field_separator
-    endif
-
     if match(b:user_headers, b:field_project) != -1
         if g:header_alignment
             let b:field_project =
                 \ s:align_field_with_spaces(b:field_project, a:longer_header_length)
         endif
         let b:field_project = b:field_project . b:field_separator
+    endif
+
+    if match(b:user_headers, b:field_license_id) != -1
+        if g:header_alignment
+            let b:field_license_id =
+                \ s:align_field_with_spaces(b:field_license_id, a:longer_header_length)
+        endif
+        let b:field_license_id = b:field_license_id . b:field_separator
     endif
 
     if match(b:user_headers, b:field_author) != -1
