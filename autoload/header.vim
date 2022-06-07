@@ -420,6 +420,10 @@ fun s:update_header()
             call s:update_header_field_and_value(b:field_file, split(expand('%s:t'),'/')[-1])
         endif
     endif
+    "" Update project field
+    if g:header_field_project != ''
+        call s:update_header_field(b:field_project)
+    endif
     "" Update field license id
     if g:header_field_license_id != ''
         call s:update_header_field(b:field_license_id)
