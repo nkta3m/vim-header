@@ -6,6 +6,7 @@ if !exists('g:header_field_project')
 endif
 if !exists('g:header_field_last_separator')
 	let g:header_field_last_separator = 0
+endif
 if !exists('g:header_field_copyright')
     let g:header_field_copyright = ''
 endif

@@ -104,6 +104,7 @@ Settings related to **headers**:
 Settings related to **headers' fields**:
 
 - [`g:header_field_filename`](#gheader_field_filename)
+- [`g:header_field_project`](#gheader_field_project)
 - [`g:header_field_filename_path`](#gheader_field_filename_path)
 - [`g:header_field_author`](#gheader_field_author)
 - [`g:header_field_author_email`](#gheader_field_author_email)
@@ -173,6 +174,16 @@ let g:header_field_filename = 0
 ```
 
 Toggles `File:` header field. **1 by default**.
+
+g:header_field_project
+-----------------------
+
+```vim
+let g:header_field_project = 'Your Project'
+```
+
+Sets defined value for `Project:` field. Empty string
+disables it. **'' by default**.
 
 g:header_field_filename_path
 ----------------------------
@@ -359,3 +370,4 @@ correct my English on README file or at comments in source code.
 [Contributors List](https://github.com/alpertuna/vim-header/graphs/contributors)
 
 [⬆ back to top](#table-of-contents)
+
