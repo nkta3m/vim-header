@@ -602,6 +602,10 @@ fun s:get_user_headers()
         call add(headers_fields, b:field_file)
     endif
 
+    if g:header_field_project
+        call add(headers_fields, b:field_project)
+    endif
+
     " License id
     if g:header_field_license_id != ''
         call add(headers_fields, b:field_license_id)
