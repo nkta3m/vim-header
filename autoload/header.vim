@@ -72,6 +72,7 @@ fun s:set_props()
         \ b:filetype == 'arduino' ||
         \ b:filetype == 'c' ||
         \ b:filetype == 'cpp' ||
+        \ b:filetype == 'cuda' ||
         \ b:filetype == 'css' ||
         \ (expand('%:e') == 'cfc' && b:filetype == 'cf') ||
         \ b:filetype == 'groovy' ||
