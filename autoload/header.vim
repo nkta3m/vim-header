@@ -232,8 +232,8 @@ fun s:set_props()
     " ----------------------------------
     elseif b:filetype == 'markdown'
         let b:block_comment = 1
-        let b:comment_begin = '```'
-        let b:comment_end = '```'
+        let b:comment_begin = '<!--'
+        let b:comment_end = '-->'
         " ----------------------------------
     elseif b:filetype == 'tcl'
        let b:first_line = '#!/usr/bin/env tclsh'
