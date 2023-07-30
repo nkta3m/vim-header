@@ -331,6 +331,7 @@ Supported filetypes are:
 And licenses are:
 
 - Apache
+- SHL
 - EUP
 - GNU GPL
 - GNU AGPL
