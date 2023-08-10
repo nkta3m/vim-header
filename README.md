@@ -283,6 +283,7 @@ Supported filetypes are:
 - coldfusion(cfc,cfml)
 - cpp
 - cs
+- cuda
 - css
 - dart
 - dosini
