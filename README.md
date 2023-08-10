@@ -316,6 +316,7 @@ Supported filetypes are:
 - scala
 - scheme
 - sh
+- svelte
 - tcl
 - tex
 - tmux
