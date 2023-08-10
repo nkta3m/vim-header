@@ -283,6 +283,7 @@ Supported filetypes are:
 - coldfusion(cfc,cfml)
 - cpp
 - cs
+- cuda
 - css
 - dart
 - dosini
@@ -316,6 +317,7 @@ Supported filetypes are:
 - scala
 - scheme
 - sh
+- svelte
 - tcl
 - tex
 - tmux

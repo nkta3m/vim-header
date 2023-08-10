@@ -181,6 +181,12 @@ fun s:set_props()
         let b:comment_begin = '<!--'
         let b:comment_end = '-->'
     " ----------------------------------
+    elseif b:filetype == 'svelte'
+        let b:block_comment = 1
+        let b:comment_char = ' -'
+        let b:comment_begin = '<!--'
+        let b:comment_end = '-->'
+    " ----------------------------------
     elseif b:filetype == 'cf'
         let b:block_comment = 1
         let b:comment_char = ' -- '
