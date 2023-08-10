@@ -1,3 +1,8 @@
+" File              : header.vim
+" Author            : Charles Tang <tang9ian@gmail.com>
+" Date              : 2023-08-10 14:26:03
+" Last Modified Date: 2023-08-10 14:28:27
+" Last Modified By  : Charles Tang <tang9ian@gmail.com>
 " PROPERTIES AND FUNCTIONS FOR GENERAL PURPOSES
 " ---------------------------------------------
 " Set default global values
@@ -72,7 +77,6 @@ fun s:set_props()
         \ b:filetype == 'arduino' ||
         \ b:filetype == 'c' ||
         \ b:filetype == 'cpp' ||
-        \ b:filetype == 'cuda' ||
         \ b:filetype == 'css' ||
         \ (expand('%:e') == 'cfc' && b:filetype == 'cf') ||
         \ b:filetype == 'groovy' ||
@@ -176,6 +180,12 @@ fun s:set_props()
     elseif b:filetype == 'html'
         let b:first_line = '<!DOCTYPE html>'
         let b:first_line_pattern = '<!DOCTYPE\s* html>'
+        let b:block_comment = 1
+        let b:comment_char = ' -'
+        let b:comment_begin = '<!--'
+        let b:comment_end = '-->'
+    " ----------------------------------
+    elseif b:filetype == 'svelte'
         let b:block_comment = 1
         let b:comment_char = ' -'
         let b:comment_begin = '<!--'
