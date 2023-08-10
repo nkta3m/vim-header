@@ -1,8 +1,3 @@
-" File              : header.vim
-" Author            : Charles Tang <tang9ian@gmail.com>
-" Date              : 2023-08-10 14:26:03
-" Last Modified Date: 2023-08-10 14:28:27
-" Last Modified By  : Charles Tang <tang9ian@gmail.com>
 " PROPERTIES AND FUNCTIONS FOR GENERAL PURPOSES
 " ---------------------------------------------
 " Set default global values
