@@ -104,6 +104,7 @@ Settings related to **headers**:
 Settings related to **headers' fields**:
 
 - [`g:header_field_filename`](#gheader_field_filename)
+- [`g:header_field_project`](#gheader_field_project)
 - [`g:header_field_filename_path`](#gheader_field_filename_path)
 - [`g:header_field_author`](#gheader_field_author)
 - [`g:header_field_author_email`](#gheader_field_author_email)
@@ -113,6 +114,7 @@ Settings related to **headers' fields**:
 - [`g:header_field_modified_by`](#gheader_field_modified_by)
 - [`g:header_field_timestamp_format`](#gheader_field_timestamp_format)
 - [`g:header_field_license_id`](#gheader_field_license_id)
+- [`g:header_field_last_separator`](#gheader_field_last_separator)
 
 Settings related to **supported filetypes**:
 
@@ -173,6 +175,16 @@ let g:header_field_filename = 0
 
 Toggles `File:` header field. **1 by default**.
 
+g:header_field_project
+-----------------------
+
+```vim
+let g:header_field_project = 'Your Project'
+```
+
+Sets defined value for `Project:` field. Empty string
+disables it. **'' by default**.
+
 g:header_field_filename_path
 ----------------------------
 
@@ -219,7 +231,7 @@ g:header_field_timestamp
 let g:header_field_timestamp = 0
 ```
 
-Toggles `Date:` header field. **1 by default**.
+Toggles `File Created:` header field. **1 by default**.
 
 g:header_field_modified_timestamp
 ---------------------------------
@@ -258,6 +270,15 @@ let g:header_field_license_id = 'BSD-3-Clause'
 ```
 
 Sets license field. **'' by default**.
+
+g:header_field_last_separator
+-------------------------------
+
+```vim
+let g:header_field_last_separator = 0
+```
+
+Toggles `-----` header field. **0 by default**.
 
 g:header_cfg_comment_char
 -------------------------
@@ -352,3 +373,4 @@ correct my English on README file or at comments in source code.
 [Contributors List](https://github.com/alpertuna/vim-header/graphs/contributors)
 
 [⬆ back to top](#table-of-contents)
+
