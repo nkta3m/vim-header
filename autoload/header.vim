@@ -1,6 +1,12 @@
 " PROPERTIES AND FUNCTIONS FOR GENERAL PURPOSES
 " ---------------------------------------------
 " Set default global values
+if !exists('g:header_field_project')
+    let g:header_field_project = ''
+endif
+if !exists('g:header_field_last_separator')
+    let g:header_field_last_separator = 0
+endif
 if !exists('g:header_field_copyright')
     let g:header_field_copyright = ''
 endif
@@ -60,11 +66,13 @@ fun s:set_props()
     let b:auto_space_after_char = 1 " Put auto space after comment char, if line is not empty
     " Field placeholders according to doc comment syntax, if available
     let b:field_file = 'File'
+    let b:field_project = 'Project'
     let b:field_license_id = 'License'
     let b:field_author = 'Author'
     let b:field_date = 'Date'
     let b:field_modified_date = 'Last Modified Date'
     let b:field_modified_by = 'Last Modified By'
+    let b:field_last_separator = '-----'
     let b:field_separator = ':'
 
     " Setting Values for Languages
@@ -176,6 +184,12 @@ fun s:set_props()
     elseif b:filetype == 'html'
         let b:first_line = '<!DOCTYPE html>'
         let b:first_line_pattern = '<!DOCTYPE\s* html>'
+        let b:block_comment = 1
+        let b:comment_char = ' -'
+        let b:comment_begin = '<!--'
+        let b:comment_end = '-->'
+    " ----------------------------------
+    elseif b:filetype == 'svelte'
         let b:block_comment = 1
         let b:comment_char = ' -'
         let b:comment_begin = '<!--'
@@ -314,16 +328,16 @@ fun s:add_header()
     endif
 
     " Fill user's information
-    if g:header_field_copyright != ''
-      call append(i, b:comment_char. g:header_field_copyright)
-      let i += 1
-    endif
     if g:header_field_filename
         if g:header_field_filename_path
             call append(i, b:comment_char . b:field_file . ' ' . expand('%s:t'))
         else
             call append(i, b:comment_char . b:field_file . ' ' . split(expand('%s:t'),'/')[-1])
         endif
+        let i += 1
+    endif
+    if g:header_field_project != ''
+        call append(i, b:comment_char . b:field_project . ' ' . g:header_field_project)
         let i += 1
     endif
     if g:header_field_license_id != ''
@@ -354,6 +368,14 @@ fun s:add_header()
             let email = ''
         endif
         call append(i, b:comment_char . b:field_modified_by . ' ' . g:header_field_author . email)
+        let i += 1
+    endif
+    if g:header_field_last_separator
+        call append(i, b:comment_char. b:field_last_separator)
+        let i += 1
+    endif
+    if g:header_field_copyright != ''
+        call append(i, b:comment_char. g:header_field_copyright)
         let i += 1
     endif
 
@@ -409,6 +431,10 @@ fun s:update_header()
         else
             call s:update_header_field_and_value(b:field_file, split(expand('%s:t'),'/')[-1])
         endif
+    endif
+    "" Update project field
+    if g:header_field_project != ''
+        call s:update_header_field(b:field_project)
     endif
     "" Update field license id
     if g:header_field_license_id != ''
@@ -592,6 +618,11 @@ fun s:get_user_headers()
         call add(headers_fields, b:field_file)
     endif
 
+    " Project header
+    if g:header_field_project != ''
+        call add(headers_fields, b:field_project)
+    endif
+
     " License id
     if g:header_field_license_id != ''
         call add(headers_fields, b:field_license_id)
@@ -651,6 +682,14 @@ fun s:update_fields(longer_header_length)
                 \ s:align_field_with_spaces(b:field_file, a:longer_header_length)
         endif
         let b:field_file = b:field_file . b:field_separator
+    endif
+
+    if match(b:user_headers, b:field_project) != -1
+        if g:header_alignment
+            let b:field_project =
+                \ s:align_field_with_spaces(b:field_project, a:longer_header_length)
+        endif
+        let b:field_project = b:field_project . b:field_separator
     endif
 
     if match(b:user_headers, b:field_license_id) != -1
